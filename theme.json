@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schemas.wp.org/wp/6.8/theme.json",
+  "version": 3,
+  "title": "Twenty Twenty-Five Child - Gallery",
+  "settings": {
+    "appearanceTools": true,
+    "useRootPaddingAwareAlignments": true
+  },
+  "customTemplates": [
+    {
+      "name": "category-gallery",
+      "title": "Gallery Category Template",
+      "postTypes": ["post"]
+    },
+    {
+      "name": "home",
+      "title": "Home Template",
+      "postTypes": ["post"]
+    }
+  ]
+}
