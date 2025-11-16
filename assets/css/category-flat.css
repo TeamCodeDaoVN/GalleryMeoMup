@@ -1,0 +1,232 @@
+﻿/**
+ * Category Flat Layout Styles
+ * Chỉ áp dụng cho Category ID = 1
+ */
+
+/* ẨN TIÊU ĐỀ "Category: Gallery" */
+.hide-category-title {
+    display: none !important;
+}
+
+/* Container */
+.category-flat-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Grid Layout - 3 cột */
+.category-flat-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+    gap: 30px !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 40px 0 !important;
+}
+
+/* Post Item Container */
+.flat-post-item {
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+    /* Stagger animation cho từng item */
+    .flat-post-item:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .flat-post-item:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .flat-post-item:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .flat-post-item:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+
+    .flat-post-item:nth-child(5) {
+        animation-delay: 0.5s;
+    }
+
+    .flat-post-item:nth-child(6) {
+        animation-delay: 0.6s;
+    }
+
+    .flat-post-item:hover {
+        transform: translateY(-8px);
+    }
+
+/* Featured Image Cover */
+.flat-featured-cover {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+}
+
+.flat-post-item:hover .flat-featured-cover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Gradient overlay khi hover */
+.flat-featured-cover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.flat-post-item:hover .flat-featured-cover::after {
+    opacity: 1;
+}
+
+/* Image zoom effect */
+.flat-featured-cover img {
+    transition: transform 0.4s ease;
+}
+
+.flat-post-item:hover .flat-featured-cover img {
+    transform: scale(1.05);
+}
+
+/* Category Badge - SỬA NỀN TRONG SUỐT ĐẸP HƠN */
+.flat-category-badge {
+    position: absolute !important;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    z-index: 2;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.flat-post-item:hover .flat-category-badge {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Style cho sub-category badge - NỀN TRONG SUỐT */
+.flat-category-badge .wp-block-post-terms,
+.flat-category-badge .sub-category-only {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+    .flat-category-badge .wp-block-post-terms a,
+    .flat-category-badge .sub-category-only a {
+        display: inline-block;
+        /* NỀN TRẮNG MỜ GLASS EFFECT */
+        background: rgba(255, 255, 255, 0.9) !important;
+        color: #1a1a1a !important;
+        padding: 8px 18px;
+        border-radius: 25px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none !important;
+        transition: all 0.3s ease;
+        /* GLASS MORPHISM EFFECT */
+        backdrop-filter: blur(12px) saturate(180%);
+        -webkit-backdrop-filter: blur(12px) saturate(180%);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+        .flat-category-badge .wp-block-post-terms a:hover,
+        .flat-category-badge .sub-category-only a:hover {
+            background: rgba(255, 255, 255, 0.95) !important;
+            color: #0073aa !important;
+            transform: scale(1.08);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+
+/* Post Content */
+.flat-post-content {
+    background: #fff;
+}
+
+.flat-post-title a {
+    color: #1a1a1a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    .flat-post-title a:hover {
+        color: #0073aa;
+    }
+
+.flat-post-date {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #757575;
+}
+
+    .flat-post-date::before {
+        content: '📅';
+        font-size: 12px;
+    }
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .category-flat-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 25px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .category-flat-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+    }
+
+    .flat-featured-cover {
+        min-height: 200px !important;
+    }
+
+    .flat-post-title {
+        font-size: 16px !important;
+    }
+
+    .flat-category-badge .wp-block-post-terms a,
+    .flat-category-badge .sub-category-only a {
+        font-size: 12px;
+        padding: 6px 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-flat-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .flat-featured-cover {
+        min-height: 240px !important;
+    }
+}

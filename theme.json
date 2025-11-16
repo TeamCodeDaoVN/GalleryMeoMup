@@ -3,51 +3,16 @@
   "version": 2,
   "settings": {
     "appearanceTools": true,
-    "color": {
-      "palette": [
-        {
-          "slug": "primary",
-          "color": "#2563eb",
-          "name": "Primary"
-        },
-        {
-          "slug": "secondary",
-          "color": "#64748b",
-          "name": "Secondary"
-        },
-        {
-          "slug": "accent",
-          "color": "#f59e0b",
-          "name": "Accent"
-        }
-      ]
-    },
-    "spacing": {
-      "units": [ "px", "em", "rem", "vh", "vw", "%" ]
-    },
-    "typography": {
-      "fontSizes": [
-        {
-          "slug": "small",
-          "size": "0.875rem",
-          "name": "Small"
-        },
-        {
-          "slug": "medium",
-          "size": "1rem",
-          "name": "Medium"
-        },
-        {
-          "slug": "large",
-          "size": "1.25rem",
-          "name": "Large"
-        },
-        {
-          "slug": "x-large",
-          "size": "1.5rem",
-          "name": "Extra Large"
-        }
-      ]
+    "layout": {
+      "contentSize": "1200px",
+      "wideSize": "1400px"
     }
-  }
+  },
+  "customTemplates": [
+    {
+      "name": "category-1",
+      "title": "Category ID 1 Template",
+      "postTypes": []
+    }
+  ]
 }

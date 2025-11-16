@@ -1,9 +1,9 @@
-/*
-Theme Name: Twenty Twenty Five Child
-Theme URI: https://example.com/twentytwentyfive-child
-Description: Child theme của Twenty Twenty Five với custom category template
+﻿/*
+Theme Name: Twenty Twenty-Five Child
+Theme URI: https://wordpress.org/themes/twentytwentyfive/
+Description: Child theme của Twenty Twenty-Five với custom category layout
 Author: Your Name
-Author URI: https://example.com
+Author URI: https://yourwebsite.com
 Template: twentytwentyfive
 Version: 1.0.0
 License: GNU General Public License v2 or later
@@ -11,4 +11,4 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: twentytwentyfive-child
 */
 
-/* Các custom styles của bạn ở đây */
+/* Import parent theme styles */
