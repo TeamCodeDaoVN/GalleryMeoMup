@@ -142,3 +142,5 @@ function gallerymm_enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'gallerymm_enqueue_assets');
 
+require_once get_stylesheet_directory() . '/includes/gallerymm.php';
+
