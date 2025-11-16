@@ -1,73 +1,40 @@
 <?php
 /**
  * GalleryMM Shortcode
- * 
- * Cách dùng - Chỉ cần paste link ảnh:
+ * Usage:
  * [GalleryMM]
  * https://example.com/image1.jpg
  * https://example.com/image2.jpg
- * https://example.com/image3.jpg
  * [/GalleryMM]
  */
 
-if (!defined('ABSPATH')) {
-    exit;
-}
+if (!defined('ABSPATH')) exit;
 
-// Register shortcode
-add_shortcode('GalleryMM', 'gallerymm_shortcode_handler');
-
-/**
- * GalleryMM shortcode handler
- */
-function gallerymm_shortcode_handler($atts, $content = null) {
-    // Kiểm tra content trống
+add_shortcode('GalleryMM', function($atts, $content = null) {
     if (empty($content)) {
-        return '<p style="color:#dc2626;padding:1rem;background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;margin:1rem 0;">⚠️ <strong>GalleryMM:</strong> Vui lòng thêm link ảnh vào shortcode!</p>';
+        return '<p class="gallery-error">⚠️ <strong>GalleryMM:</strong> Vui lòng thêm link ảnh!</p>';
     }
     
-    // Parse image URLs - loại bỏ dòng trống
+    // Parse & validate URLs
     $lines = array_filter(array_map('trim', explode("\n", strip_tags($content))));
-    
-    if (empty($lines)) {
-        return '<p style="color:#dc2626;padding:1rem;background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;margin:1rem 0;">⚠️ <strong>GalleryMM:</strong> Không tìm thấy link ảnh!</p>';
-    }
-    
-    // Validate và build gallery
-    $gallery_items = array();
+    $gallery_items = [];
     $index = 0;
     
     foreach ($lines as $line) {
-        // Skip dòng không phải URL
-        if (!filter_var($line, FILTER_VALIDATE_URL)) {
-            continue;
-        }
+        if (!filter_var($line, FILTER_VALIDATE_URL)) continue;
         
         $index++;
-        $alt_text = 'Gallery Image ' . $index;
-        
-        // Dùng CÙNG URL cho cả thumbnail và full image
         $gallery_items[] = sprintf(
-            '<div class="gallery-item">
-                <a href="%s">
-                    <img src="%s" alt="%s">
-                </a>
-            </div>',
+            '<div class="gallery-item"><a href="%s"><img src="%s" alt="Gallery Image %d" loading="lazy"></a></div>',
             esc_url($line),
             esc_url($line),
-            esc_attr($alt_text)
+            $index
         );
     }
     
-    // Nếu không có URL hợp lệ nào
     if (empty($gallery_items)) {
-        return '<p style="color:#dc2626;padding:1rem;background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;margin:1rem 0;">⚠️ <strong>GalleryMM:</strong> Không có URL ảnh hợp lệ! Vui lòng kiểm tra lại định dạng link.</p>';
+        return '<p class="gallery-error">⚠️ <strong>GalleryMM:</strong> Không có URL hợp lệ!</p>';
     }
     
-    // Return gallery HTML với class custom-gallery-grid
-    $output = '<div class="custom-gallery-grid">';
-    $output .= implode('', $gallery_items);
-    $output .= '</div>';
-    
-    return $output;
-}
+    return '<div class="custom-gallery-grid">' . implode('', $gallery_items) . '</div>';
+});

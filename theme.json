@@ -1,21 +1,53 @@
 {
-  "$schema": "https://schemas.wp.org/wp/6.8/theme.json",
-  "version": 3,
-  "title": "Twenty Twenty-Five Child - Gallery",
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
   "settings": {
     "appearanceTools": true,
-    "useRootPaddingAwareAlignments": true
-  },
-  "customTemplates": [
-    {
-      "name": "category-gallery",
-      "title": "Gallery Category Template",
-      "postTypes": ["post"]
+    "color": {
+      "palette": [
+        {
+          "slug": "primary",
+          "color": "#2563eb",
+          "name": "Primary"
+        },
+        {
+          "slug": "secondary",
+          "color": "#64748b",
+          "name": "Secondary"
+        },
+        {
+          "slug": "accent",
+          "color": "#f59e0b",
+          "name": "Accent"
+        }
+      ]
     },
-    {
-      "name": "home",
-      "title": "Home Template",
-      "postTypes": ["post"]
+    "spacing": {
+      "units": [ "px", "em", "rem", "vh", "vw", "%" ]
+    },
+    "typography": {
+      "fontSizes": [
+        {
+          "slug": "small",
+          "size": "0.875rem",
+          "name": "Small"
+        },
+        {
+          "slug": "medium",
+          "size": "1rem",
+          "name": "Medium"
+        },
+        {
+          "slug": "large",
+          "size": "1.25rem",
+          "name": "Large"
+        },
+        {
+          "slug": "x-large",
+          "size": "1.5rem",
+          "name": "Extra Large"
+        }
+      ]
     }
-  ]
+  }
 }
